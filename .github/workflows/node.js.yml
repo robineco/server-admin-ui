@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Node.js
 
 on:
   push:
@@ -14,15 +14,6 @@ jobs:
         working-directory: ./de.robinscloud.admin-ui
     steps:
     - uses: actions/checkout@v1
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-      with:  
-        args: >
-          -Dsonar.organization=robinscloud
-          -Dsonar.projectKey=robineco_server-admin-ui
     - name: Install Dependencies
       run: npm install
     - name: Build
