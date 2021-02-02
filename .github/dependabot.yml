@@ -1,0 +1,14 @@
+version: 2
+updates:
+
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/de.robinscloud.admin-ui"
+    schedule:
+      interval: "daily"
+      
+  # Maintain dependencies for gomod
+  - package-ecosystem: "gomod"
+    directory: "/de.robinscloud.admin-backend"
+    schedule:
+      interval: "daily"
