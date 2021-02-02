@@ -14,7 +14,9 @@ jobs:
         working-directory: ./de.robinscloud.admin-ui
     steps:
     - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1.5
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - uses: actions/checkout@v2
     - name: Install Dependencies
       run: npm install
