@@ -22,7 +22,6 @@ jobs:
         args: >
           -Dsonar.organization=robinscloud
           -Dsonar.projectKey=robineco_server-admin-ui
-    - uses: actions/checkout@v2
     - name: Install Dependencies
       run: npm install
     - name: Build
