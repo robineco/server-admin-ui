@@ -13,6 +13,7 @@ jobs:
       run:
         working-directory: ./de.robinscloud.admin-ui
     steps:
+    - uses: actions/checkout@v1
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
