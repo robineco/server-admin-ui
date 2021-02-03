@@ -1,20 +1,7 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
-      <!--  -->
-    </v-navigation-drawer>
-    <v-app-bar app shrink-on-scroll>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>RobinsCloud AdminUI</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-      <v-btn icon @click="logout">
-        <v-icon large color="orange darken-2">
-          mdi-logout-variant
-        </v-icon>
-      </v-btn>
-    </v-app-bar>
+    <Drawer :isOpen="isDrawerOpen" />
+    <NavigationBar :toggleDrawer="toggleDrawer" />
 
     <v-main v-if="this.$store.state.loggedIn">
       <v-container>
@@ -70,18 +57,20 @@
 
 <script>
 // import { checkStatus } from "../services/StatusService/StatusService";
+import Drawer from '@/components/nav-drawer/Drawer.vue';
+import NavigationBar from '@/components/nav-bar/NavigationBar.vue';
 import Footer from '@/components/footer/Footer.vue';
 
 export default {
   name: 'Dashboard',
-  components: { Footer },
+  components: { Footer, Drawer, NavigationBar },
   async mounted() {
     // checkStatus(this.services.bitwarden).then(
     //   (status) => (this.services.bitwarden.status.status = status)
     // );
   },
   data: () => ({
-    drawer: false,
+    isDrawerOpen: false,
     isLoggedIn: false,
     services: {
       bitwarden: {
@@ -107,9 +96,8 @@ export default {
     },
   }),
   methods: {
-    logout() {
-      this.$store.commit('logoutUser');
-      this.$router.push('/');
+    toggleDrawer() {
+      this.isDrawerOpen = !this.isDrawerOpen;
     },
   },
 };
