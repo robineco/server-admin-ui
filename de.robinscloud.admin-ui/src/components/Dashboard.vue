@@ -1,6 +1,8 @@
 <template>
   <v-app id="inspire">
-    <Drawer :isOpen="isDrawerOpen" />
+    <v-navigation-drawer v-model="isDrawerOpen" app>
+      <!--  -->
+    </v-navigation-drawer>
     <NavigationBar :toggleDrawer="toggleDrawer" />
 
     <v-main v-if="this.$store.state.loggedIn">
@@ -57,13 +59,12 @@
 
 <script>
 // import { checkStatus } from "../services/StatusService/StatusService";
-import Drawer from '@/components/nav-drawer/Drawer.vue';
 import NavigationBar from '@/components/nav-bar/NavigationBar.vue';
 import Footer from '@/components/footer/Footer.vue';
 
 export default {
   name: 'Dashboard',
-  components: { Footer, Drawer, NavigationBar },
+  components: { Footer, NavigationBar },
   async mounted() {
     // checkStatus(this.services.bitwarden).then(
     //   (status) => (this.services.bitwarden.status.status = status)
